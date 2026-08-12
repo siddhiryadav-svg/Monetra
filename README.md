@@ -69,6 +69,7 @@ Keep both terminals running simultaneously — the frontend talks to the backend
 ## Author
 
 Siddhi Yadav — BSc Data Science and Artificial Intelligence
+Alok Yadav -BSc Data Science and Artificial Intelligence
 
 ---
 
