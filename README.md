@@ -1,4 +1,4 @@
-# Monetra 💜
+# Monetra 
 
 A personal finance dashboard for tracking cash flow, savings, and investments — built as a final-year BSc Data Science and AI project.
 
@@ -69,6 +69,7 @@ Keep both terminals running simultaneously — the frontend talks to the backend
 ## Author
 
 Siddhi Yadav — BSc Data Science and Artificial Intelligence
+Alok Yadav -BSc Data Science and Artificial Intelligence
 
 ---
 
