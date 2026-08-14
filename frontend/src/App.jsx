@@ -11,43 +11,51 @@ const ACCENT = 'var(--accent)'
 function getThemeVars(darkMode) {
   if (darkMode) {
     return {
-      '--primary': '#E8E3F5',
-      '--primary-muted': '#A99FC7',
-      '--highlight': '#6FE0D0',
-      '--negative': '#F294A8',
-      '--accent': '#8F7FD4',
-      '--card-bg': 'rgba(40,32,66,0.85)',
-      '--card-shadow': '0 4px 14px rgba(0,0,0,0.35)',
-      '--input-bg': 'rgba(255,255,255,0.08)',
-      '--page-bg': 'linear-gradient(160deg, #241B3D 0%, #1A2E45 100%)',
-      '--shell-bg': 'rgba(30,24,50,0.5)',
-      '--sidebar-bg': 'rgba(35,28,58,0.7)',
-      '--border-color': 'rgba(255,255,255,0.12)',
-      '--menu-bg': '#2E2450',
-      '--active-nav-bg': 'rgba(143,127,212,0.25)',
-      '--banner-bg': 'linear-gradient(135deg, rgba(143,127,212,0.35), rgba(111,224,208,0.2))',
-      '--tag-negative-bg': 'rgba(242,148,168,0.2)',
-      '--tag-positive-bg': 'rgba(111,224,208,0.2)'
+      '--primary': '#EDEFF7',
+      '--primary-muted': '#8B8FA8',
+      '--highlight': '#2DD9B5',
+      '--negative': '#F2547D',
+      '--accent': '#7C6FF0',
+      '--card-bg': '#161A2C',
+      '--card-shadow': '0 4px 18px rgba(0,0,0,0.35)',
+      '--input-bg': 'rgba(255,255,255,0.06)',
+      '--page-bg': '#0B0E1A',
+      '--shell-bg': 'transparent',
+      '--sidebar-bg': '#12162A',
+      '--border-color': 'rgba(255,255,255,0.08)',
+      '--menu-bg': '#161A2C',
+      '--active-nav-bg': 'rgba(124,111,240,0.18)',
+      '--banner-bg': 'linear-gradient(135deg, rgba(124,111,240,0.25), rgba(45,217,181,0.15))',
+      '--tag-negative-bg': 'rgba(242,84,125,0.15)',
+      '--tag-positive-bg': 'rgba(45,217,181,0.15)',
+      '--badge-purple': 'rgba(124,111,240,0.18)',
+      '--badge-teal': 'rgba(45,217,181,0.18)',
+      '--badge-pink': 'rgba(242,84,125,0.18)',
+      '--badge-orange': 'rgba(244,177,79,0.18)'
     }
   }
   return {
-    '--primary': '#5B4B8A',
-    '--primary-muted': '#8B7FB0',
-    '--highlight': '#4FA8A0',
-    '--negative': '#E8748A',
-    '--accent': '#5B4B8A',
-    '--card-bg': 'rgba(255,255,255,0.85)',
-    '--card-shadow': '0 4px 14px rgba(91,75,138,0.10)',
-    '--input-bg': 'rgba(255,255,255,0.8)',
-    '--page-bg': 'linear-gradient(160deg, #FDE2E4 0%, #CDE7F0 100%)',
-    '--shell-bg': 'rgba(255,255,255,0.5)',
-    '--sidebar-bg': 'rgba(255,255,255,0.7)',
-    '--border-color': '#eee',
+    '--primary': '#2B2540',
+    '--primary-muted': '#8B85A3',
+    '--highlight': '#1DAE8C',
+    '--negative': '#E8547A',
+    '--accent': '#6C5CE7',
+    '--card-bg': '#FFFFFF',
+    '--card-shadow': '0 4px 18px rgba(43,37,64,0.08)',
+    '--input-bg': '#F4F3FA',
+    '--page-bg': '#F6F5FB',
+    '--shell-bg': 'transparent',
+    '--sidebar-bg': '#FFFFFF',
+    '--border-color': '#ECEAF5',
     '--menu-bg': '#ffffff',
-    '--active-nav-bg': 'linear-gradient(135deg,#FDE2E4,#CDE7F0)',
-    '--banner-bg': 'linear-gradient(135deg,#FDE2E4,#CDE7F0)',
-    '--tag-negative-bg': '#FDE2E4',
-    '--tag-positive-bg': '#DCF2EF'
+    '--active-nav-bg': 'rgba(108,92,231,0.10)',
+    '--banner-bg': 'linear-gradient(135deg,#EFECFD,#E4F8F3)',
+    '--tag-negative-bg': '#FCE7EC',
+    '--tag-positive-bg': '#E1F7F0',
+    '--badge-purple': 'rgba(108,92,231,0.12)',
+    '--badge-teal': 'rgba(29,174,140,0.12)',
+    '--badge-pink': 'rgba(232,84,122,0.12)',
+    '--badge-orange': 'rgba(230,152,45,0.12)'
   }
 }
 
@@ -153,19 +161,20 @@ const tabButtonStyle = (active) => ({
 const sidebarItemStyle = (active) => ({
   display: 'flex',
   alignItems: 'center',
-  gap: '10px',
+  gap: '12px',
   width: '100%',
   padding: '11px 14px',
   fontFamily: "'IBM Plex Sans', sans-serif",
-  fontSize: '15px',
-  fontWeight: active ? '600' : '400',
-  background: active ? 'var(--active-nav-bg)' : 'transparent',
-  color: PRIMARY,
+  fontSize: '14.5px',
+  fontWeight: active ? '600' : '500',
+  background: active ? ACCENT : 'transparent',
+  color: active ? '#fff' : PRIMARY_MUTED,
   border: 'none',
   borderRadius: '12px',
   cursor: 'pointer',
   textAlign: 'left',
-  boxShadow: active ? '0 2px 8px rgba(91,75,138,0.15)' : 'none'
+  boxShadow: active ? '0 4px 14px rgba(124,111,240,0.35)' : 'none',
+  transition: 'background 0.15s ease, color 0.15s ease'
 })
 
 const OverviewIcon = () => (
@@ -225,25 +234,35 @@ const inputStyle = {
 
 const cardBaseStyle = {
   background: 'var(--card-bg)',
-  borderRadius: '16px',
-  boxShadow: CARD_SHADOW
+  borderRadius: '18px',
+  boxShadow: CARD_SHADOW,
+  border: '1px solid var(--border-color)'
 }
 
 const API = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000'
 
+const badgeCycle = ['--badge-purple', '--badge-teal', '--badge-pink', '--badge-orange']
+
 function SummaryCards({ cards }) {
   return (
-    <div style={{ display: 'flex', gap: '14px', marginBottom: '20px', flexWrap: 'wrap' }}>
+    <div style={{ display: 'flex', gap: '16px', marginBottom: '22px', flexWrap: 'wrap' }}>
       {cards.map((card, i) => (
         <div key={i} style={{
-          flex: '1 1 160px',
-          minWidth: '150px',
+          flex: '1 1 200px',
+          minWidth: '190px',
           ...cardBaseStyle,
-          padding: '16px 18px'
+          padding: '18px 20px'
         }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
-            {card.icon && <span style={{ fontSize: '14px' }}>{card.icon}</span>}
-            <div style={{ fontSize: '11px', color: PRIMARY_MUTED, textTransform: 'uppercase', letterSpacing: '0.03em' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '14px' }}>
+            {card.icon && (
+              <span style={{
+                width: '38px', height: '38px', borderRadius: '12px',
+                background: `var(${badgeCycle[i % badgeCycle.length]})`,
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: '17px', flexShrink: 0
+              }}>{card.icon}</span>
+            )}
+            <div style={{ fontSize: '11px', color: PRIMARY_MUTED, textTransform: 'uppercase', letterSpacing: '0.04em', fontWeight: '600' }}>
               {card.label}
             </div>
             {card.tooltip && (
@@ -252,11 +271,11 @@ function SummaryCards({ cards }) {
               </span>
             )}
           </div>
-          <div style={{ fontSize: '21px', fontWeight: '600', fontFamily: "'Poppins', sans-serif", color: card.color || PRIMARY }}>
+          <div style={{ fontSize: '24px', fontWeight: '700', fontFamily: "'Poppins', sans-serif", color: card.color || PRIMARY }}>
             {card.value}
           </div>
           {card.subtext && (
-            <div style={{ fontSize: '12px', color: card.subtextColor || PRIMARY_MUTED, marginTop: '4px' }}>
+            <div style={{ fontSize: '12.5px', color: card.subtextColor || PRIMARY_MUTED, marginTop: '5px' }}>
               {card.subtext}
             </div>
           )}
@@ -915,7 +934,8 @@ function App() {
   const amounts = activeTab === 'spending' ? spendingAmounts : incomeAmounts
   const total = activeTab === 'spending' ? spendingTotal : incomeTotal
 
-  const savedThisMonth = incomeTotal - spendingTotal
+  const savingsTotal = savingsCategories.reduce((sum, cat) => sum + (parseFloat(savingsAmounts[cat]) || 0), 0)
+  const savedThisMonth = incomeTotal - spendingTotal - savingsTotal
   const savingsRate = incomeTotal > 0 ? Math.round((savedThisMonth / incomeTotal) * 100) : 0
   const savingsGoal = parseFloat(goalAmounts['monthly_goal']) || 0
   const goalProgress = savingsGoal > 0 ? Math.round((savedThisMonth / savingsGoal) * 100) : 0
@@ -959,10 +979,18 @@ function App() {
   }
 
   return (
-    <div style={{ ...getThemeVars(darkMode), minHeight: '100vh', background: 'var(--page-bg)', padding: isMobile ? '12px' : '24px', fontFamily: "'IBM Plex Sans', sans-serif" }}>
-    <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', width: '100%', background: 'var(--shell-bg)', borderRadius: '24px', overflow: 'hidden', backdropFilter: 'blur(6px)' }}>
-      <div style={{ width: isMobile ? '100%' : '220px', flexShrink: 0, background: 'var(--sidebar-bg)', padding: isMobile ? '14px' : '24px 14px', display: 'flex', flexDirection: 'column' }}>
-        <h1 style={{ marginBottom: isMobile ? '12px' : '28px', marginTop: 0, paddingLeft: '8px', fontFamily: "'Poppins', sans-serif", fontWeight: '700', color: PRIMARY, fontSize: isMobile ? '24px' : '30px' }}>Monetra</h1>
+    <div style={{ ...getThemeVars(darkMode), minHeight: '100vh', background: 'var(--page-bg)', padding: isMobile ? '0' : '20px', fontFamily: "'IBM Plex Sans', sans-serif" }}>
+    <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', width: '100%', minHeight: isMobile ? '100vh' : 'calc(100vh - 40px)', background: 'var(--shell-bg)', borderRadius: isMobile ? '0' : '22px', overflow: 'hidden' }}>
+      <div style={{ width: isMobile ? '100%' : '236px', flexShrink: 0, background: 'var(--sidebar-bg)', padding: isMobile ? '14px' : '26px 16px', display: 'flex', flexDirection: 'column', borderRight: isMobile ? 'none' : '1px solid var(--border-color)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: isMobile ? '12px' : '32px', paddingLeft: '8px' }}>
+          <span style={{ width: '34px', height: '34px', borderRadius: '10px', background: `linear-gradient(135deg, ${ACCENT}, #2DD9B5)`, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 17l5-5 4 4 8-9" />
+              <path d="M15 7h5v5" />
+            </svg>
+          </span>
+          {!isMobile && <h1 style={{ margin: 0, fontFamily: "'Poppins', sans-serif", fontWeight: '700', color: PRIMARY, fontSize: '22px' }}>Monetra</h1>}
+        </div>
         <nav style={{ display: 'flex', flexDirection: isMobile ? 'row' : 'column', gap: '4px', overflowX: isMobile ? 'auto' : 'visible' }}>
           <button onClick={() => setMainPage('overview')} style={{ ...sidebarItemStyle(mainPage === 'overview'), whiteSpace: 'nowrap', width: isMobile ? 'auto' : '100%' }}>
             <OverviewIcon /> {!isMobile && 'Overview'}
@@ -1037,7 +1065,7 @@ function App() {
         </div>
       </div>
 
-      <div key={mainPage} style={{ flex: 1, padding: isMobile ? '16px' : '30px 36px', animation: 'fadeIn 0.25s ease', minWidth: 0 }}>
+      <div key={mainPage} style={{ flex: 1, padding: isMobile ? '16px' : '32px 40px', animation: 'fadeIn 0.25s ease', minWidth: 0, background: 'var(--page-bg)' }}>
       <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-start', marginBottom: '16px' }}>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
           <select
@@ -1303,67 +1331,93 @@ function App() {
             </div>
           )}
 
-          {activeTab === 'spending' && (
-            <div style={{ ...cardBaseStyle, padding: '20px', marginBottom: '20px' }}>
-              <h4 style={{ marginTop: 0, fontFamily: "'Poppins', sans-serif", color: PRIMARY }}>Where this month's spending went</h4>
-              <DonutChart
-                categories={allSpendingCategories}
-                amounts={spendingAmounts}
-                colors={spendingColors}
-                total={spendingTotal}
-              />
-            </div>
-          )}
-
-          <div style={{ display: 'flex', gap: '8px', marginBottom: '20px' }}>
-            <button
-              onClick={() => setActiveTab('spending')}
-              style={tabButtonStyle(activeTab === 'spending')}
-            >
-              Spending
-            </button>
-            <button
-              onClick={() => setActiveTab('income')}
-              style={tabButtonStyle(activeTab === 'income')}
-            >
-              Income
-            </button>
+          <div style={{ ...cardBaseStyle, padding: '20px', marginBottom: '20px' }}>
+            <h4 style={{ marginTop: 0, fontFamily: "'Poppins', sans-serif", color: PRIMARY }}>Where this month's spending went</h4>
+            <DonutChart
+              categories={allSpendingCategories}
+              amounts={spendingAmounts}
+              colors={spendingColors}
+              total={spendingTotal}
+            />
           </div>
 
-          {categories.map(category => {
-            const limit = parseFloat(categoryLimits[category])
-            const spent = parseFloat(amounts[category]) || 0
-            const overLimit = activeTab === 'spending' && !isNaN(limit) && limit > 0 && spent > limit
-            return (
-              <div key={category} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  <label style={{ color: PRIMARY }}>{category}</label>
-                  {overLimit && (
-                    <span style={{ fontSize: '11px', padding: '2px 8px', borderRadius: '10px', background: 'var(--tag-negative-bg)', color: NEGATIVE, fontWeight: '500' }}>
-                      Over ₹{limit} limit
-                    </span>
-                  )}
-                </div>
+          <div style={{ ...cardBaseStyle, padding: '22px', marginBottom: '20px', border: '1px solid rgba(45,217,181,0.35)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '18px' }}>
+              <span style={{ width: '42px', height: '42px', borderRadius: '12px', background: 'var(--badge-teal)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>💰</span>
+              <div>
+                <div style={{ fontFamily: "'Poppins', sans-serif", color: PRIMARY, fontSize: '17px', fontWeight: '600' }}>Income</div>
+                <div style={{ fontSize: '12px', color: PRIMARY_MUTED }}>This month</div>
+              </div>
+              <div style={{ marginLeft: 'auto', fontFamily: "'Poppins', sans-serif", color: HIGHLIGHT, fontSize: '26px', fontWeight: '700' }}>
+                ₹{incomeTotal.toLocaleString('en-IN')}
+              </div>
+            </div>
+            {incomeCategories.map(category => (
+              <div key={category} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '10px 12px', marginBottom: '8px', background: 'var(--input-bg)', borderRadius: '12px' }}>
+                <span style={{ width: '30px', height: '30px', borderRadius: '9px', background: 'var(--badge-teal)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '15px', color: HIGHLIGHT, flexShrink: 0 }}>+</span>
+                <label style={{ color: PRIMARY, fontSize: '14px', fontWeight: '500', flex: 1 }}>{category}</label>
                 <input
                   type="number"
                   placeholder="0"
-                  value={amounts[category] || ''}
-                  onChange={(e) => handleChange(activeTab, category, e.target.value)}
-                  style={{ ...inputStyle, width: '120px' }}
+                  value={incomeAmounts[category] || ''}
+                  onChange={(e) => handleChange('income', category, e.target.value)}
+                  style={{ ...inputStyle, width: '110px', background: 'var(--card-bg)' }}
                 />
               </div>
-            )
-          })}
+            ))}
+            <button
+              onClick={() => handleSave('income', incomeCategories, incomeAmounts)}
+              disabled={saving}
+              style={{ ...actionButtonStyle, padding: '10px 20px', fontSize: '14px', marginTop: '10px', background: HIGHLIGHT }}
+            >
+              {saving ? 'Saving...' : 'Save income'}
+            </button>
+          </div>
 
-          <h3 style={{ fontFamily: "'Poppins', sans-serif", color: PRIMARY }}>Total: ₹{total.toLocaleString('en-IN')}</h3>
-
-          <button
-            onClick={() => handleSave(activeTab, categories, amounts)}
-            disabled={saving}
-            style={{ ...actionButtonStyle, padding: '11px 22px', fontSize: '16px' }}
-          >
-            {saving ? 'Saving...' : 'Save'}
-          </button>
+          <div style={{ ...cardBaseStyle, padding: '22px', marginBottom: '20px', border: '1px solid rgba(242,84,125,0.3)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '18px' }}>
+              <span style={{ width: '42px', height: '42px', borderRadius: '12px', background: 'var(--badge-pink)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px' }}>💸</span>
+              <div>
+                <div style={{ fontFamily: "'Poppins', sans-serif", color: PRIMARY, fontSize: '17px', fontWeight: '600' }}>Spending</div>
+                <div style={{ fontSize: '12px', color: PRIMARY_MUTED }}>This month</div>
+              </div>
+              <div style={{ marginLeft: 'auto', fontFamily: "'Poppins', sans-serif", color: NEGATIVE, fontSize: '26px', fontWeight: '700' }}>
+                ₹{spendingTotal.toLocaleString('en-IN')}
+              </div>
+            </div>
+            {allSpendingCategories.map(category => {
+              const limit = parseFloat(categoryLimits[category])
+              const spent = parseFloat(spendingAmounts[category]) || 0
+              const overLimit = !isNaN(limit) && limit > 0 && spent > limit
+              return (
+                <div key={category} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '10px 12px', marginBottom: '8px', background: 'var(--input-bg)', borderRadius: '12px' }}>
+                  <span style={{ width: '30px', height: '30px', borderRadius: '9px', background: 'var(--badge-pink)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '15px', color: NEGATIVE, flexShrink: 0 }}>+</span>
+                  <div style={{ flex: 1, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <label style={{ color: PRIMARY, fontSize: '14px', fontWeight: '500' }}>{category}</label>
+                    {overLimit && (
+                      <span style={{ fontSize: '11px', padding: '2px 8px', borderRadius: '10px', background: 'var(--tag-negative-bg)', color: NEGATIVE, fontWeight: '500' }}>
+                        Over ₹{limit}
+                      </span>
+                    )}
+                  </div>
+                  <input
+                    type="number"
+                    placeholder="0"
+                    value={spendingAmounts[category] || ''}
+                    onChange={(e) => handleChange('spending', category, e.target.value)}
+                    style={{ ...inputStyle, width: '110px', background: 'var(--card-bg)' }}
+                  />
+                </div>
+              )
+            })}
+            <button
+              onClick={() => handleSave('spending', allSpendingCategories, spendingAmounts)}
+              disabled={saving}
+              style={{ ...actionButtonStyle, padding: '10px 20px', fontSize: '14px', marginTop: '10px', background: NEGATIVE }}
+            >
+              {saving ? 'Saving...' : 'Save spending'}
+            </button>
+          </div>
         </>
       )}
 
@@ -1375,7 +1429,7 @@ function App() {
 
           <SummaryCards cards={[
             { label: 'Monthly Income', value: `₹${incomeTotal.toLocaleString('en-IN')}`, icon: '💰' },
-            { label: 'Monthly Spending', value: `₹${spendingTotal.toLocaleString('en-IN')}`, icon: '💸' },
+            { label: 'Total Spent + Invested', value: `₹${(spendingTotal + savingsTotal).toLocaleString('en-IN')}`, icon: '💸' },
             {
               label: 'Saved This Month',
               value: `₹${savedThisMonth.toLocaleString('en-IN')}`,
@@ -1443,8 +1497,21 @@ function App() {
               ₹{savedThisMonth.toLocaleString('en-IN')}
             </div>
             <div style={{ fontSize: '13px', color: PRIMARY, opacity: 0.7, marginTop: '4px' }}>
-              Based on your income minus spending this month
+              Based on your income minus spending and investments this month
             </div>
+          </div>
+
+          <div style={{ ...cardBaseStyle, padding: '16px 20px', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <span style={{ width: '38px', height: '38px', borderRadius: '12px', background: 'var(--badge-purple)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '17px', flexShrink: 0 }}>📈</span>
+            <div>
+              <div style={{ fontSize: '11px', color: PRIMARY_MUTED, textTransform: 'uppercase', letterSpacing: '0.03em' }}>Already invested in stocks this month</div>
+              <div style={{ fontSize: '20px', fontWeight: '700', color: PRIMARY, fontFamily: "'Poppins', sans-serif" }}>
+                ₹{(parseFloat(savingsAmounts['Stocks']) || 0).toLocaleString('en-IN')}
+              </div>
+            </div>
+            <button onClick={() => setMainPage('savings')} style={{ ...secondaryButtonStyle, marginLeft: 'auto' }}>
+              Edit in Savings
+            </button>
           </div>
 
           {loadingStocks && (
