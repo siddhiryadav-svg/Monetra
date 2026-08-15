@@ -319,8 +319,11 @@ def add_entry(entry: Entry):
     user_id = get_user_id_from_token(entry.token)
     if not user_id:
         return {"error": "Invalid or missing session token"}
-
     conn = get_db_connection()
+    conn.execute(
+        "DELETE FROM entries WHERE month = ? AND section = ? AND category = ? AND user_id = ?",
+        (entry.month, entry.section, entry.category, user_id)
+    )
     conn.execute(
         "INSERT INTO entries (month, section, category, amount, user_id) VALUES (?, ?, ?, ?, ?)",
         (entry.month, entry.section, entry.category, entry.amount, user_id)
@@ -334,7 +337,6 @@ def get_entries(month: str, token: str, section: str = None):
     user_id = get_user_id_from_token(token)
     if not user_id:
         return {"error": "Invalid or missing session token"}
-
     conn = get_db_connection()
     if section:
         rows = conn.execute(
